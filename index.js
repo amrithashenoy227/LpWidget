@@ -1,18 +1,18 @@
 console.log("index.js");
 errorMessage = document.getElementById("errorMessage");
-chatText = "chatTranscript.lines";
+chatText = "chatTranscript.lines"; //taking msg from user (movie name)
 console.log(chatText); 
 
-var updateCallback = function(data){
+var updateCallback = function(data){  //takes value from chat
     var value = data.newValue;
     
     console.log("value : "+value);
-    var line = value[value.length -1];
-    console.log("line : "+line);
-    var movieName = line.text;
+    var line = value[value.length -1]; //takes last line
+    console.log("line : "+line); 
+    var movieName = line.text; //store only text(m.name)
     console.log("after movieName");
     console.log("moviename : "+movieName);
-    if (line.source.toLowerCase()==="visitor"){
+    if (line.source.toLowerCase()==="visitor"){  //if visitor, makeing api call & store response
         var url = "https://www.omdbapi.com?apikey=9c244dec&t="+movieName;
         fetch(url)
                 .then(function(response){
@@ -47,5 +47,5 @@ var notifyWhenDone = function(error) {
 
  
 
-lpTag.agentSDK.init({});
-lpTag.agentSDK.bind(chatText, updateCallback, notifyWhenDone);
+lpTag.agentSDK.init({});  
+lpTag.agentSDK.bind(chatText, updateCallback, notifyWhenDone);  //binding chat text and method
