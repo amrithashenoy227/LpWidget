@@ -12,7 +12,7 @@ var updateCallback = function(data){  //takes value from chat
     var movieName = line.text; //store only text(m.name)
     console.log("after movieName");
     console.log("moviename : "+movieName);
-    if (line.source.toLowerCase()==="visitor"){  //if visitor, makeing api call & store response
+    if (line.source.toLowerCase()==="visitor"){  //if visitor, make api call & store response
         var url = "https://www.omdbapi.com?apikey=9c244dec&t="+movieName;
         fetch(url)
                 .then(function(response){
